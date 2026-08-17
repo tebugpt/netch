@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 // ReSharper disable InconsistentNaming
 
 namespace Netch.Servers;
@@ -83,15 +83,13 @@ public class VnextItem
 public class ShadowsocksServerItem
 {
     public string address { get; set; }
-    
+
     public ushort port { get; set; }
 
     public string method { get; set; }
 
     public string password { get; set; }
-
-    public string flow { get; set; }
- }
+}
 
 public class Mux
 {
@@ -140,6 +138,16 @@ public class TlsSettings
     public bool allowInsecure { get; set; }
 
     public string serverName { get; set; }
+
+    /// <summary>
+    ///     ALPN 列表，例如 ["h2"]
+    /// </summary>
+    public string[] alpn { get; set; }
+
+    /// <summary>
+    ///     uTLS 指纹，例如 chrome
+    /// </summary>
+    public string fingerprint { get; set; }
 }
 
 public class TcpSettings
