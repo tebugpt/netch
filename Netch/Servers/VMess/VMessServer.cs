@@ -127,6 +127,11 @@ public class VMessServer : Server
     ///     xhttp Mode
     /// </summary>
     public string? XhttpMode { get; set; } = "auto";
+
+    /// <summary>
+    ///     ALPN (e.g. h2 或 h2,http/1.1)
+    /// </summary>
+    public string? Alpn { get; set; }
 }
 
 public class VMessGlobal
@@ -150,13 +155,10 @@ public class VMessGlobal
     public static readonly List<string> PacketEncodings = new()
     {
         "none",
-        "packet", // requires v2fly/v2ray-core v5.0.2+ or SagerNet/v2ray-core
-        "xudp" // requires XTLS/Xray-core or SagerNet/v2ray-core
+        "packet",
+        "xudp"
     };
 
-    /// <summary>
-    ///     V2Ray 传输协议
-    /// </summary>
     public static readonly List<string> TransferProtocols = new()
     {
         "tcp",
@@ -169,9 +171,6 @@ public class VMessGlobal
         "xhttp"
     };
 
-    /// <summary>
-    ///     V2Ray 伪装类型
-    /// </summary>
     public static readonly List<string> FakeTypes = new()
     {
         "none",
@@ -185,9 +184,6 @@ public class VMessGlobal
         "multi"
     };
 
-    /// <summary>
-    ///     TLS 安全类型
-    /// </summary>
     public static readonly List<string> TLSSecure = new()
     {
         "none",
