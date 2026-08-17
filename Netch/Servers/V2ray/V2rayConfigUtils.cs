@@ -304,13 +304,24 @@ public static class V2rayConfigUtils
             security = server.TLSSecureType
         };
 
-        if (server.TLSSecureType != "none")
+                if (server.TLSSecureType != "none")
         {
             var tlsSettings = new TlsSettings
             {
                 allowInsecure = Global.Settings.V2RayConfig.AllowInsecure,
-                serverName = server.ServerName.ValueOrDefault() ?? server.Host.SplitOrDefault()?[0]
+                serverName = server.ServerName.ValueOrDefault() ?? server.Host.SplitOrDefault()?[0],
+                fingerprint = server.Fingerprint.ValueOrDefault() ?? "chrome"
             };
+
+            // 写入 ALPN（支持 "h2" 或 "h2,http/1.1"）
+            if (!string.IsNullOrWhiteSpace(server.Alpn))
+            {
+                tlsSettings.alpn = server.Alpn
+                    .Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim())
+                    .Where(s => s.Length > 0)
+                    .ToArray();
+            }
 
             switch (server.TLSSecureType)
             {
