@@ -29,9 +29,9 @@ public class Outbound
 
     public OutboundConfiguration settings { get; set; }
 
-    public StreamSettings? streamSettings { get; set; }
+    public StreamSettings streamSettings { get; set; }
 
-    public Mux? mux { get; set; }
+    public Mux mux { get; set; }
 }
 
 public class OutboundConfiguration
@@ -89,6 +89,8 @@ public class ShadowsocksServerItem
     public string method { get; set; }
 
     public string password { get; set; }
+
+    public string flow { get; set; }
 }
 
 public class Mux
@@ -140,12 +142,12 @@ public class TlsSettings
     public string serverName { get; set; }
 
     /// <summary>
-    ///     ALPN 列表，例如 ["h2"]
+    /// ALPN，例如 ["h2"]
     /// </summary>
     public string[] alpn { get; set; }
 
     /// <summary>
-    ///     uTLS 指纹，例如 chrome
+    /// uTLS 指纹，例如 chrome
     /// </summary>
     public string fingerprint { get; set; }
 }
