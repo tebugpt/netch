@@ -29,7 +29,8 @@ internal class VLESSForm : ServerForm
             server.PacketEncoding);
 
         CreateComboBox("FakeType", "Fake Type", VLESSGlobal.FakeTypes, s => server.FakeType = s, server.FakeType);
-        CreateComboBox("XhttpMode", "xhttp Mode", new List<string> { "auto", "packet-up", "stream-up", "stream-down" }, s => server.XhttpMode = s, server.XhttpMode ?? "auto");
+        // 已加入 stream-one
+        CreateComboBox("XhttpMode", "xhttp Mode", new List<string> { "auto", "packet-up", "stream-up", "stream-one", "stream-down" }, s => server.XhttpMode = s, server.XhttpMode ?? "auto");
         CreateTextBox("Host", "Host", s => true, s => server.Host = s, server.Host);
         CreateTextBox("Path", "Path", s => true, s => server.Path = s, server.Path);
         CreateComboBox("QUICSecurity", "QUIC Security", VLESSGlobal.QUIC, s => server.QUICSecure = s, server.QUICSecure);
@@ -43,7 +44,9 @@ internal class VLESSForm : ServerForm
         CreateComboBox("TLSSecure", "TLS Secure", VLESSGlobal.TLSSecure, s => server.TLSSecureType = s, server.TLSSecureType);
         CreateTextBox("PublicKey", "Reality Public Key", s => true, s => server.PublicKey = s, server.PublicKey);
         CreateTextBox("ShortId", "Reality Short ID", s => true, s => server.ShortId = s, server.ShortId);
-        CreateTextBox("Fingerprint", "Reality Fingerprint", s => true, s => server.Fingerprint = s, server.Fingerprint);
+        CreateTextBox("Fingerprint", "Fingerprint", s => true, s => server.Fingerprint = s, server.Fingerprint);
+        // 新增 ALPN 输入框
+        CreateTextBox("Alpn", "ALPN (e.g. h2)", s => true, s => server.Alpn = s, server.Alpn);
     }
 
     protected override string TypeName { get; } = "VLESS";
