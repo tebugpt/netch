@@ -69,6 +69,10 @@ jobs:
           Download $url "xray.zip"
           7z e "xray.zip" "xray.exe" -o"Other\release" -y
 
+          # hysteria2 (apernet/hysteria 的 release 资产文件名自带 .exe，直接下载改名即可)
+          $url = LatestAsset "apernet/hysteria" "hysteria-windows-amd64.exe"
+          Download $url "Other\release\hysteria.exe"
+
           # wintun.dll 随 Netch 官方 Release 一起提取，见下方
 
           # tun2socks.bin は Netch 独自 DLL ビルド、官方 Release から取る（後で aiodns と一緒に抽出）
