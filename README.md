@@ -13,11 +13,12 @@ A simple proxy client — forked from [netchx/netch](https://github.com/netchx/n
 ## 与上游的差异
 
 ### 新增传输协议
-- **HTTPUpgrade** — 基于 HTTP/1.1 Upgrade 的传输，适合套 CDN
-- **xhttp** — 基于 HTTP/1.1 分块传输
+- **HTTPUpgrade** 
+- **xhttp** 
+- **hysteria2**
 
 ### 新增 TLS 安全类型
-- **Reality** — 支持 VLESS + Reality，需填写 Public Key、Short ID、Fingerprint
+- **Reality** — 支持 VLESS + Reality，参数Public Key、Short ID、Fingerprint
 
 ### 内核替换
 - 将 `v2ray-sn.exe`（SagerNet/v2ray-core）替换为 `xray.exe`（XTLS/Xray-core 最新版）
